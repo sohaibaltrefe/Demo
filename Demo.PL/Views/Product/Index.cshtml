@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ProductVm>
+
+@section mainHeader{
+    all product
+}
+    <a asp-controller="Product" asp-action="Create" class="btn btn-primary"> create</a>
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(Model => Model.Name)</th>
+                <th>@Html.DisplayNameFor(Model => Model.Price)</th>
+                <th>operations</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model)
+            {
+                @if(item.IsDeleted==false){
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Price</td>
+                    <td>
+                        <partial name="_ButtonsPartial" for="@item.Id"/>
+                    </td>
+                    </tr>
+                }
+
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <alert class="alert alert-info">
+        no data ...
+    </alert>
+}

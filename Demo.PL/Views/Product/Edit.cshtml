@@ -1,0 +1,14 @@
+﻿@model ProductFormViewModel
+@section mainHeader {
+    Edit product
+}
+
+<form asp-controller="Product" asp-action="Edit" method="post">
+    <!-- Pass the full model to the partial view -->
+    <partial name="PartialView/CreateEditProductPartial" model="@Model" />
+
+    <button class="btn btn-outline-primary" type="submit">Update</button>
+</form>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
